@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import { CourseraVpcStack } from '../lib/vpc';
+import { EmployeeEC2Stack } from '../lib/ec2';
 import { getConfig } from '../lib/config';
 
 
@@ -14,4 +14,4 @@ const env = {
 };
 
 
-new CourseraVpcStack(app, 'EmployeeVpcStack', { env });
+new EmployeeEC2Stack(app, 'EmployeeServerStack', { env });
