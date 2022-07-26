@@ -18,16 +18,27 @@ export class CourseraVpcStack extends Stack {
 
     new aws_ec2.Vpc(this,'EmployeeVPC',{
         vpcName: `${config.account}-${config.region}-employee-vpc-stack`,
-        cidr: '10.0.0.0/16',
+        cidr: '10.1.0.0/16',
         maxAzs:2,
+    
         subnetConfiguration:[
             {
                 name:'public',
                 subnetType:aws_ec2.SubnetType.PUBLIC,
-                cidrMask:20,
-            }
+                cidrMask:24,
+
+            },
+            {
+                name:'private',
+                subnetType:aws_ec2.SubnetType.PRIVATE_ISOLATED,
+                cidrMask:24,
+
+
+            },
+            
 
         ],
+
 
     });
 

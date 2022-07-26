@@ -6,6 +6,7 @@ aws_iam,
 
  } from 'aws-cdk-lib';
 import { getConfig } from '../config';
+import { readFileSync } from 'fs';
 
 export class EmployeeEC2Stack extends Stack {
     
@@ -33,25 +34,39 @@ export class EmployeeEC2Stack extends Stack {
         availabilityZones: config.availabilityZones,
         vpcId: config.vpcId,
         publicSubnetIds: config.publicSubnetIds, 
+
       });
 
       const machineSg = new aws_ec2.SecurityGroup(this, 'EmployeeServerSG', {
         vpc,
         allowAllOutbound: true,
         securityGroupName: 'employee-server-sg',
+        description:'Enable HTTP access'
+
       });
 
       //incoming traffic
       machineSg.addIngressRule(aws_ec2.Peer.anyIpv4(), aws_ec2.Port.tcp(22), 'allow access to ssh port anywhere')
+      machineSg.addIngressRule(aws_ec2.Peer.anyIpv4(),aws_ec2.Port.tcp(80),'allow HTTP port to be accessible from anywhere');
+      machineSg.addIngressRule(aws_ec2.Peer.anyIpv4(),aws_ec2.Port.tcp(443),'allow HTTPs port to be accessible from anywhere');
+
       
+       
+
       const myInstance = new aws_ec2.Instance(this, 'EmployeeServer', {
         instanceType: aws_ec2.InstanceType.of(aws_ec2.InstanceClass.T2, aws_ec2.InstanceSize.MICRO),
         vpc,
         machineImage: aws_ec2.MachineImage.latestAmazonLinux({}),
         keyName: 'coursera-pem', // instance'a bağlanmak için key-pair
         securityGroup: machineSg,
-        role:role
+        role:role,
+   
+      
+
+        
     });
+    const userDataScript=readFileSync('./lib/user-data.sh','utf-8');
+    myInstance.addUserData(userDataScript);
 
   }
 }
