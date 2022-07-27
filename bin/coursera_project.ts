@@ -3,7 +3,7 @@ import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { CourseraVpcStack } from '../lib/vpc';
 import { getConfig } from '../lib/config';
-
+import { EmployeePhotosStack } from '../lib/s3';
 
 
 const app = new cdk.App();
@@ -15,3 +15,5 @@ const env = {
 
 
 new CourseraVpcStack(app, 'EmployeeVpcStack', { env });
+
+new EmployeePhotosStack(app, 'EmployeePhotosStack', { env });
