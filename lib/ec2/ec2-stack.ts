@@ -35,13 +35,15 @@ export class EmployeeEC2Stack extends Stack {
         vpcId: config.vpcId,
         publicSubnetIds: config.publicSubnetIds, 
 
+
       });
 
       const machineSg = new aws_ec2.SecurityGroup(this, 'EmployeeServerSG', {
         vpc,
         allowAllOutbound: true,
         securityGroupName: 'employee-server-sg',
-        description:'Enable HTTP access'
+        description:'Enable HTTP access',
+        
 
       });
 
@@ -56,10 +58,13 @@ export class EmployeeEC2Stack extends Stack {
       const myInstance = new aws_ec2.Instance(this, 'EmployeeServer', {
         instanceType: aws_ec2.InstanceType.of(aws_ec2.InstanceClass.T2, aws_ec2.InstanceSize.MICRO),
         vpc,
-        machineImage: aws_ec2.MachineImage.latestAmazonLinux({}),
+        machineImage: new aws_ec2.AmazonLinuxImage({
+          generation: aws_ec2.AmazonLinuxGeneration.AMAZON_LINUX_2,
+        }),
         keyName: 'coursera-pem', // instance'a bağlanmak için key-pair
         securityGroup: machineSg,
         role:role,
+        
    
       
 
