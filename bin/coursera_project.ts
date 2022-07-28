@@ -4,7 +4,7 @@ import * as cdk from 'aws-cdk-lib';
 import { CourseraVpcStack } from '../lib/vpc';
 import { getConfig } from '../lib/config';
 import { EmployeePhotosStack } from '../lib/s3';
-
+import { DynamoDBStack } from '../lib/dynamodb';
 
 const app = new cdk.App();
 const conf = getConfig(app);
@@ -17,3 +17,4 @@ const env = {
 new CourseraVpcStack(app, 'EmployeeVpcStack', { env });
 
 new EmployeePhotosStack(app, 'EmployeePhotosStack', { env });
+new DynamoDBStack(app, 'DynamoDBStack', { env });

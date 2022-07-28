@@ -34,7 +34,7 @@ export class EmployeePhotosStack extends Stack {
         }),
         
     );
-    
+
 
    
 

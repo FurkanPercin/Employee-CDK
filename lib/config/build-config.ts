@@ -8,9 +8,9 @@ interface Config {
   vpcId: string;
   availabilityZones: string[];
   publicSubnetIds: string[];
-  minAutoScaleTaskCount:number;
-  maxAutoScaleTaskCount:number;
-  fargateServiceDesiredCount:number;
+  DynamoDBReadCapacity:number;
+  DynamoDBWriteCapacity:number;
+  
 }
 
 function getConfig(scope: App | Construct) {
@@ -23,9 +23,9 @@ function getConfig(scope: App | Construct) {
     vpcId: context.vpcId,
     availabilityZones: context.availabilityZones,
     publicSubnetIds: context.publicSubnetIds,
-    minAutoScaleTaskCount:context.minAutoScaleTaskCount,
-    maxAutoScaleTaskCount:context.maxAutoScaleTaskCount,
-    fargateServiceDesiredCount:context.fargateServiceDesiredCount
+    DynamoDBReadCapacity:context.DynamoDBReadCapacity,
+    DynamoDBWriteCapacity:context.DynamoDBWriteCapacity,
+ 
   };
 
   return conf;

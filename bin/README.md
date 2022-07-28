@@ -13,3 +13,8 @@ cdk diff --app "npx ts-node bin/computing.ts" EmployeeServerStack
 cdk synth --app "npx ts-node bin/coursera_project.ts" EmployeePhotosStack
 cdk deploy --app "npx ts-node bin/coursera_project.ts" EmployeePhotosStack
 cdk diff --app "npx ts-node bin/coursera_project.ts" EmployeePhotosStack
+
+### DynamoDBStack
+cdk synth --app "npx ts-node bin/coursera_project.ts" DynamoDBStack
+cdk deploy --app "npx ts-node bin/coursera_project.ts" DynamoDBStack
+cdk diff --app "npx ts-node bin/coursera_project.ts" DynamoDBStack
