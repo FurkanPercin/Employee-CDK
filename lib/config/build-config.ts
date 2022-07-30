@@ -10,7 +10,15 @@ interface Config {
   publicSubnetIds: string[];
   DynamoDBReadCapacity:number;
   DynamoDBWriteCapacity:number;
-  
+  CertificateARN:string;
+  HostedZoneId:string;
+  zoneName:string;
+  recordName:string;
+  healthyThresholdCount:number;
+  unhealthyThresholdCount:number;
+  desiredCapacity:number;
+  minCapacity:number;
+  maxCapacity:number;
 }
 
 function getConfig(scope: App | Construct) {
@@ -25,11 +33,23 @@ function getConfig(scope: App | Construct) {
     publicSubnetIds: context.publicSubnetIds,
     DynamoDBReadCapacity:context.DynamoDBReadCapacity,
     DynamoDBWriteCapacity:context.DynamoDBWriteCapacity,
- 
+    CertificateARN:context.CertificateARN,
+    HostedZoneId:context.HostedZoneId,
+    zoneName:context.zoneName,
+    recordName:context.recordName,
+    healthyThresholdCount:context.healthyThresholdCount,
+    unhealthyThresholdCount:context.unhealthyThresholdCount,
+    desiredCapacity:context.desiredCapacity,
+    minCapacity:context.minCapacity,
+    maxCapacity:context.maxCapacity,
   };
-
+  
+  
   return conf;
-}
+  }
+
+  
+
 
 export {
   getConfig,

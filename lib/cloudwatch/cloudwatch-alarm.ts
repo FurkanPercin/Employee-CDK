@@ -33,7 +33,9 @@ export class CloudWatchAlarm extends Stack {
         metric: cpuMetric,
 
     });
-    const topic =new aws_sns.Topic(this,'Topic')
+    const topic =new aws_sns.Topic(this,'Topic',{
+        
+    })
     alarm.addAlarmAction(new aws_cloudwatch_actions.SnsAction(topic));
     
 
