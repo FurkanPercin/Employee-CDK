@@ -1,14 +1,5 @@
-# Welcome to your CDK TypeScript project
+# Employee Directory Application Infrastructure on AWS
 
-This is a blank project for CDK development with TypeScript.
-
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
-
-## Useful commands
-
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
+The employee directory application is currently being hosted across multiple EC2 instances inside of a VPC.
+The EC2 instances are part of an EC2 auto scaling group and traffic is being distributed across them using an Application Load Balancer.
+The database is being hosted on Amazon DynamoDB and the images are stored in S3.
