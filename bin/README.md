@@ -18,3 +18,9 @@ cdk diff --app "npx ts-node bin/coursera_project.ts" EmployeePhotosStack
 cdk synth --app "npx ts-node bin/coursera_project.ts" DynamoDBStack
 cdk deploy --app "npx ts-node bin/coursera_project.ts" DynamoDBStack
 cdk diff --app "npx ts-node bin/coursera_project.ts" DynamoDBStack
+
+
+### CloudWatchAlarm
+cdk synth --app "npx ts-node bin/coursera_project.ts" CloudWatchAlarm
+cdk deploy --app "npx ts-node bin/coursera_project.ts" CloudWatchAlarm
+cdk diff --app "npx ts-node bin/coursera_project.ts" CloudWatchAlarm

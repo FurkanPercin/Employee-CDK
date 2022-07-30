@@ -7,9 +7,7 @@ import { getConfig } from '../config';
 
 export class DynamoDBStack extends Stack {
     
-    get availabilityZones(): string[] {//To restrict AZ
-        return ['eu-central-1b', 'eu-central-1c']
-    }
+    
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
     const config = getConfig(scope);
@@ -21,9 +19,9 @@ export class DynamoDBStack extends Stack {
         partitionKey:{name: 'id', type: aws_dynamodb.AttributeType.STRING},
         billingMode: aws_dynamodb.BillingMode.PROVISIONED,
         removalPolicy: RemovalPolicy.DESTROY,
-        pointInTimeRecovery: true,
-        sortKey: {name: 'createdAt', type: aws_dynamodb.AttributeType.NUMBER},
-
+        pointInTimeRecovery: false,
+        //sortKey: {name: 'createdAt', type: aws_dynamodb.AttributeType.NUMBER},
+      
     })
 
    

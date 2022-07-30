@@ -65,6 +65,7 @@ export class EmployeeEC2Stack extends Stack {
         securityGroup: machineSg,
         role:role,
         
+        
    
       
 
