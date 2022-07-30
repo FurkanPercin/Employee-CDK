@@ -4,6 +4,6 @@ The employee directory application is  being hosted across multiple EC2 instance
 The database is being hosted on Amazon DynamoDB and the images are stored in S3. Amazon Route53 service was used for DNS operations. SSL certificate was generated from Amazon ACM and secure connection was established. Metrics and alarms were created via Amazon CloudWatch.
 
 <p align="center">
-  <img src="./readme.png" width="350" title="hover text">
- 
+  <img src="readme.png" width="350" title="hover text">
+
 </p>
